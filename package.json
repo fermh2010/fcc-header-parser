@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/fermh2010/fcc-header-parser/issues"
   },
-  "homepage": "https://github.com/fermh2010/fcc-header-parser#readme"
+  "homepage": "https://github.com/fermh2010/fcc-header-parser#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
