@@ -3,9 +3,11 @@ const app = express();
 
 app.set('port', process.env.port || 8080);
 
+app.get('/', function(req, res) {
+    res.redirect("/api/whoami");
+})
+
 app.get('/api/whoami', function(req, res) {
-    console.log(req.headers);
-    
     var regex_result;
     
     var ip = req.headers['x-forwarded-for']
