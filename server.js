@@ -8,17 +8,24 @@ app.get('/', function(req, res) {
 })
 
 app.get('/api/whoami', function(req, res) {
+    console.log(req.headers);
+    
     var regex_result;
     
     var ip = req.headers['x-forwarded-for']
         || req.connection.remoteAddress;
     
     const lang_raw = req.headers['accept-language'];
-    regex_result = /^([a-zA-Z-]+),/.exec(lang_raw);
-    var lang = null;
-    if(regex_result && regex_result.length > 1) {
-        lang = regex_result[1];
+    if(lang_raw.indexOf(',') == -1) {
+        lang = lang_raw;
+    } else {
+        regex_result = /^([a-zA-Z-]+),/.exec(lang_raw);
+        var lang = null;
+        if(regex_result && regex_result.length > 1) {
+            lang = regex_result[1];
+        }
     }
+    
     
     const agent_raw = req.headers['user-agent'];
     regex_result = /\(([^\)]+)\)/.exec(agent_raw);
